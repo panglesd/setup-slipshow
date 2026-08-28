@@ -18,7 +18,7 @@ jobs:
         uses: ./ # Uses an action in the root directory
 
       # Use the output from the `hello` step
-      - name: Try it
+      - name: Check version
         run: slipshow --version
 
   ubuntu_fixed:
@@ -37,7 +37,7 @@ jobs:
           version: v0.11.0
 
       # Use the output from the `hello` step
-      - name: Try it
+      - name: Check version
         run: slipshow --version
 
   # hello_world_job_mac:
