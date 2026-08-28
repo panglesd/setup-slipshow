@@ -16,9 +16,6 @@ jobs:
 
       - name: Hello world action step
         uses: ./ # Uses an action in the root directory
-        id: hello
-        with:
-          version: v0.11.0
 
       # Use the output from the `hello` step
       - name: Try it
