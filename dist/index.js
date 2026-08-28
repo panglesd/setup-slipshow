@@ -33079,8 +33079,8 @@ async function setup() {
   const osPlatform = mapOS(os.platform());
   const osArch = mapArch(os.arch());
 
-  const downloadURL = `https://github.com/panglesd/slipshow/releases/download/${version}/slipshow-${osPlatform}-${osArch}.tar`;
-
+  const path = version === "latest" ? "latest/download" : `download/${version}`;
+  const downloadURL = `https://github.com/panglesd/slipshow/releases/${path}/slipshow-${osPlatform}-${osArch}.tar`;
   info(downloadURL);
 
   // Download the specific version of the tool, e.g. as a tarball
