@@ -1,6 +1,6 @@
 import * as core from "@actions/core";
 import * as tc from "@actions/tool-cache";
-
+import * as os from 'os';
 // arch in [x64, arm...] (https://nodejs.org/api/os.html#os_os_arch)
 // return value in [x86_64, arm64]
 function mapArch (arch) {
