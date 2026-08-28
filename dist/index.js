@@ -33081,8 +33081,7 @@ async function setup() {
 
   const downloadURL = `https://github.com/panglesd/slipshow/releases/download/${version}/slipshow-${osPlatform}-${osArch}.tar`;
 
-  debug('Debug');
-  debug(downloadURL);
+  info(downloadURL);
 
   // Download the specific version of the tool, e.g. as a tarball
   const pathToTarball = await downloadTool(downloadURL);
