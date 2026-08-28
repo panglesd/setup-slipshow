@@ -1,8 +1,8 @@
-name: Hello World
-description: Greet someone and record the time
+name: Setup Slipshow
+description: Setup Slipshow, adds it to the PATH.
 
 inputs:
-  version: # id of input
+  version:
     description: Which version to install
     required: false
     default: latest
