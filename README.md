@@ -17,7 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install slipshow
-        uses: panglesd/setup-slipshow@v1
+        uses: panglesd/setup-slipshow@main
       - name: Compile presentation
         run: slipshow compile pres.slp -o pres.html
 ```
+
+(When a tag is pushed, use the tag instead of `main`)
