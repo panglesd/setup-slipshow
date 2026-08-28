@@ -18,7 +18,7 @@ function mapOS (os) {
     win32: 'windows',
       darwin: 'macos'
   };
-    return mappings[os]
+    return mappings[os] || os;
 }
 
 async function setup() {
