@@ -50,9 +50,11 @@ jobs:
 
 ### You want to publish the compiled presentation on GitHub pages
 
-Use GitHub's [deploy-page](https://github.com/actions/deploy-pages) action. Note
-that this requires to set the GitHub Pages source as "GitHub Actions", in
-`Settings > Pages`.
+Use GitHub's [deploy-page](https://github.com/actions/deploy-pages) action. 
+
+> [!NOTE] This requires to set the [GitHub Pages
+> source](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)
+> as "GitHub Actions", which you can do in `Settings > Pages`.
 
 Add the following to the example above:
 
