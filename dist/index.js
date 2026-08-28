@@ -33051,13 +33051,33 @@ function _getGlobal(key, defaultValue) {
     return value !== undefined ? value : defaultValue;
 }
 
+// arch in [x64, arm...] (https://nodejs.org/api/os.html#os_os_arch)
+// return value in [x86_64, arm64]
+function mapArch (arch) {
+  const mappings = {
+    arm: 'arm64',
+    x64: 'x86_64'
+  };
+  return mappings[arch] || arch;
+}
+
+// os in [darwin, linux, win32...] (https://nodejs.org/api/os.html#os_os_platform)
+// return value in [macos, linux, windows]
+function mapOS (os) {
+  const mappings = {
+    win32: 'windows',
+      darwin: 'macos'
+  };
+    return mappings[os]
+}
+
 async function setup() {
   // Get version of tool to be installed
   const version = getInput("version");
 
   // Gather OS details
-  const osPlatform = os.platform();
-  const osArch = os.arch();
+  const osPlatform = mapOS(os.platform());
+  const osArch = mapArch(os.arch());
 
   const downloadURL = `https://github.com/panglesd/slipshow/releases/download/${version}/slipshow-${osPlatform}-${osArch}.tar`;
 
