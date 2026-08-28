@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install slipshow
-        uses: panglesd/setup-slipshow@main
+        uses: panglesd/setup-slipshow@1.0.0
       - name: Create a directory if needed
         run: mkdir -p compiled
       - name: Compile presentation
