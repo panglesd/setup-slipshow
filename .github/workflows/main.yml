@@ -18,7 +18,7 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
-          who-to-greet: Mona the Octocat
+          version: v0.11.0
 
       # Use the output from the `hello` step
       - name: Try it
