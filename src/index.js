@@ -18,7 +18,8 @@ function mapOS (os) {
     win32: 'windows',
       darwin: 'macos'
   };
-  return mappings[os]
+    return mappings[os]
+}
 
 async function setup() {
   // Get version of tool to be installed

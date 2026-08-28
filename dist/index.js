@@ -1,4 +1,4 @@
-import * as os from 'os';
+import * as os$1 from 'os';
 import os__default from 'os';
 import * as crypto from 'crypto';
 import * as fs from 'fs';
@@ -107,7 +107,7 @@ function toCommandProperties(annotationProperties) {
  */
 function issueCommand(command, properties, message) {
     const cmd = new Command(command, properties, message);
-    process.stdout.write(cmd.toString() + os.EOL);
+    process.stdout.write(cmd.toString() + os$1.EOL);
 }
 const CMD_STRING = '::';
 class Command {
@@ -169,7 +169,7 @@ function issueFileCommand(command, message) {
     if (!fs.existsSync(filePath)) {
         throw new Error(`Missing file at path: ${filePath}`);
     }
-    fs.appendFileSync(filePath, `${toCommandValue(message)}${os.EOL}`, {
+    fs.appendFileSync(filePath, `${toCommandValue(message)}${os$1.EOL}`, {
         encoding: 'utf8'
     });
 }
@@ -29325,13 +29325,13 @@ class ToolRunner extends events$1.EventEmitter {
     _processLineBuffer(data, strBuffer, onLine) {
         try {
             let s = strBuffer + data.toString();
-            let n = s.indexOf(os.EOL);
+            let n = s.indexOf(os$1.EOL);
             while (n > -1) {
                 const line = s.substring(0, n);
                 onLine(line);
                 // the rest of the string ...
-                s = s.substring(n + os.EOL.length);
-                n = s.indexOf(os.EOL);
+                s = s.substring(n + os$1.EOL.length);
+                n = s.indexOf(os$1.EOL);
             }
             return s;
         }
@@ -29622,7 +29622,7 @@ class ToolRunner extends events$1.EventEmitter {
                 }
                 const optionsNonNull = this._cloneExecOptions(this.options);
                 if (!optionsNonNull.silent && optionsNonNull.outStream) {
-                    optionsNonNull.outStream.write(this._getCommandString(optionsNonNull) + os.EOL);
+                    optionsNonNull.outStream.write(this._getCommandString(optionsNonNull) + os$1.EOL);
                 }
                 const state = new ExecState(optionsNonNull, this.toolPath);
                 state.on('debug', (message) => {
@@ -29977,7 +29977,7 @@ function error(message, properties = {}) {
  * @param message info message
  */
 function info(message) {
-    process.stdout.write(message + os.EOL);
+    process.stdout.write(message + os$1.EOL);
 }
 
 var re = {exports: {}};
@@ -33051,13 +33051,18 @@ function _getGlobal(key, defaultValue) {
     return value !== undefined ? value : defaultValue;
 }
 
-function getDownloadURL() {
-  return "https://github.com/panglesd/slipshow/releases/download/v0.12.0/slipshow-linux-x86_64.tar";
-}
-
 async function setup() {
   // Get version of tool to be installed
-  getInput("version");
+  const version = getInput("version");
+
+  // Gather OS details
+  const osPlatform = os.platform();
+  const osArch = os.arch();
+
+  const downloadURL = `https://github.com/panglesd/slipshow/releases/download/${version}/slipshow-${osPlatform}-${osArch}.tar`;
+
+  debug('Debug');
+  debug(downloadURL);
 
   // Download the specific version of the tool, e.g. as a tarball
   const pathToTarball = await downloadTool(getDownloadURL());
