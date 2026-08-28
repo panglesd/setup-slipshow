@@ -16,12 +16,10 @@ install. Omitted it will default to `latest`.
 
 ```yaml
       - name: Install slipshow
-        uses: panglesd/setup-slipshow@main
+        uses: panglesd/setup-slipshow@1.0.0
         with:
           version: v0.12.0
 ```
-
-(When a tag is pushed, use the tag instead of `main`)
 
 Below are more complete examples.
 
@@ -41,7 +39,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install slipshow
-        uses: panglesd/setup-slipshow@main
+        uses: panglesd/setup-slipshow@1.0.0
       - name: Create a directory if needed
         run: mkdir -p compiled
       - name: Compile presentation
