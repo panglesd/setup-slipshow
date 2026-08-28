@@ -33063,10 +33063,10 @@ async function setup() {
   const pathToTarball = await downloadTool(getDownloadURL());
 
   // Extract the tarball onto the runner
-  const pathToCLI = await extractTar(pathToTarball);
+  const pathToCLI = await extractTar(pathToTarball, undefined, "x");
 
   // Expose the tool by adding it to the PATH
-  addPath(pathToCLI);
+  addPath(`${pathToCLI}/bin`);
 }
 
 setup().catch((error) => setFailed(error.message));
