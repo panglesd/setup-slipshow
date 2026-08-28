@@ -1,5 +1,8 @@
 name: Setup Slipshow
 description: Setup Slipshow, adds it to the PATH.
+branding:
+  icon: 'monitor'
+  color: 'yellow'
 
 inputs:
   version:
