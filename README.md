@@ -42,8 +42,10 @@ jobs:
         uses: actions/checkout@v6
       - name: Install slipshow
         uses: panglesd/setup-slipshow@main
+      - name: Create a directory if needed
+        run: mkdir -p compiled
       - name: Compile presentation
-        run: slipshow compile src/pres.slp -o compiled/pres.html
+        run: slipshow compile example/example.slp -o compiled/index.html
 ```
 
 ### You want to publish the compiled presentation on GitHub pages
@@ -56,7 +58,7 @@ Add the following to the example above:
 
 ```yaml
       - name: Upload as artifacts  # required for next action to publish
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: compiled/
 
