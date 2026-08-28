@@ -1,13 +1,34 @@
 import * as core from "@actions/core";
 import * as tc from "@actions/tool-cache";
 
-function getDownloadURL() {
-  return "https://github.com/panglesd/slipshow/releases/download/v0.12.0/slipshow-linux-x86_64.tar";
+// arch in [x64, arm...] (https://nodejs.org/api/os.html#os_os_arch)
+// return value in [x86_64, arm64]
+function mapArch (arch) {
+  const mappings = {
+    arm: 'arm64',
+    x64: 'x86_64'
+  };
+  return mappings[arch] || arch;
 }
+
+// os in [darwin, linux, win32...] (https://nodejs.org/api/os.html#os_os_platform)
+// return value in [macos, linux, windows]
+function mapOS (os) {
+  const mappings = {
+    win32: 'windows',
+      darwin: 'macos'
+  };
+  return mappings[os]
 
 async function setup() {
   // Get version of tool to be installed
   const version = core.getInput("version");
+
+  // Gather OS details
+  const osPlatform = os.platform();
+  const osArch = os.arch();
+
+  const downloadURL = `https://github.com/panglesd/slipshow/releases/download/${version}/slipshow-${osPlatform}-${osArch}.tar`;
 
   // Download the specific version of the tool, e.g. as a tarball
   const pathToTarball = await tc.downloadTool(getDownloadURL());

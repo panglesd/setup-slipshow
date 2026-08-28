@@ -2,14 +2,10 @@ name: Hello World
 description: Greet someone and record the time
 
 inputs:
-  who-to-greet: # id of input
-    description: Who to greet
-    required: true
-    default: World
-
-outputs:
-  time: # id of output
-    description: The time we greeted you
+  version: # id of input
+    description: Which version to install
+    required: false
+    default: latest
 
 runs:
   using: node24
