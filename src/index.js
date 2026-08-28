@@ -26,8 +26,8 @@ async function setup() {
   const version = core.getInput("version");
 
   // Gather OS details
-  const osPlatform = os.platform();
-  const osArch = os.arch();
+  const osPlatform = mapOS(os.platform());
+  const osArch = mapArch(os.arch());
 
   const downloadURL = `https://github.com/panglesd/slipshow/releases/download/${version}/slipshow-${osPlatform}-${osArch}.tar`;
 
