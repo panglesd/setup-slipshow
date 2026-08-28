@@ -4,8 +4,8 @@ on:
       - main
 
 jobs:
-  hello_world_job:
-    name: A job to say hello
+  ubuntu_test:
+    name: Testing latest on ubuntu
     runs-on: ubuntu-latest
 
     steps:
@@ -14,16 +14,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Hello world action step
+      - name: Install slipshow
         uses: ./ # Uses an action in the root directory
 
       # Use the output from the `hello` step
       - name: Try it
         run: slipshow --version
 
+  ubuntu_fixed:
+    name: Testing fixed version on ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install slipshow
+        uses: ./ # Uses an action in the root directory
+        with:
+          version: v0.11.0
+
       # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: Try it
+        run: slipshow --version
 
   # hello_world_job_mac:
   #   name: A job to say hello
