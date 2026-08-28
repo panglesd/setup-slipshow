@@ -3,6 +3,8 @@
 Action to install [slipshow](https://github.com/panglesd/slipshow) in your
 Github action.
 
+WIP. Do not use yet.
+
 Example of use:
 ```yaml
 name: Release
